@@ -1,0 +1,353 @@
+{
+  "model": "llama-3.3-70b-versatile",
+  "pipeline_results": [
+    {
+      "label": "Cypher #1 \u2014 Fast Python Answerers",
+      "question": "Find all users who answered Python questions within 10 minutes of them being posted. Return user_id and count of such fast answers.",
+      "query": "MATCH (u:User)-[:ANSWERED]->(q:Question)-[:TAGGED]->(t:Tag {name: 'Python'}), \n      (u)-[:PROVIDED]->(a:Answer)-[:ANSWERS]->(q) \nWHERE a.creation_date - q.creation_date <= duration('PT10M') \nRETURN u.id AS user_id, COUNT(a) AS count \nGROUP BY u.id \nORDER BY count DESC \nLIMIT 10",
+      "db": "neo4j",
+      "results": [
+        {
+          "error": "{neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Invalid input 'GROUP': expected ',', 'ORDER BY', 'CALL', 'CREATE', 'LOAD CSV', 'DELETE', 'DETACH', 'FILTER', 'FINISH', 'FOREACH', 'INSERT', 'LET', 'LIMIT', 'MATCH', 'MERGE', 'NEXT', 'NODETACH', 'OFFSET', 'OPTIONAL', 'REMOVE', 'RETURN', 'SET', 'SHOW', 'SKIP', 'TERMINATE', 'UNION', 'UNWIND', 'USE', 'WITH' or <EOF> (line 5, column 1 (offset: 235))\n\"GROUP BY u.id\"\n ^} {gql_status: 42001} {gql_status_description: error: syntax error or access rule violation - invalid syntax}"
+        }
+      ],
+      "insight": "Unfortunately, the query to find users who answered Python questions within 10 minutes of them being posted returned an error, specifically a syntax error. The error message indicates that the query is invalid, with the word \"GROUP\" being the point of contention, and it was expecting a different keyword or symbol. As a result, no user_ids or counts of fast answers were returned, with the error code being 42001."
+    },
+    {
+      "label": "Cypher #2 \u2014 JavaScript Tag Neighbourhood",
+      "question": "Find the top 10 tags that appear most frequently alongside the 'javascript' tag, ordered by co-occurrence weight.",
+      "query": "MATCH (t1:Tag {name: 'javascript'})-[:CO_OCCURS_WITH]-(t2:Tag) \nRETURN t2.name, SUM(t1)-[:CO_OCCURS_WITH]->(t2).weight AS weight \nORDER BY weight DESC \nLIMIT 10",
+      "db": "neo4j",
+      "results": [
+        {
+          "error": "{neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Invalid input ':': expected an expression (line 2, column 26 (offset: 89))\n\"RETURN t2.name, SUM(t1)-[:CO_OCCURS_WITH]->(t2).weight AS weight\"\n                          ^} {gql_status: 42001} {gql_status_description: error: syntax error or access rule violation - invalid syntax}"
+        }
+      ],
+      "insight": "Unfortunately, the query did not return any results due to a syntax error, with a specific error code of 42001 and a description of \"invalid syntax\". The error message indicates that there was an issue with the input on line 2, column 26, which prevented the query from executing correctly. As a result, we are unable to determine the top 10 tags that appear most frequently alongside the 'javascript' tag."
+    },
+    {
+      "label": "Cypher #3 \u2014 Python\u2013Java Bridge Users",
+      "question": "Find users who answered questions tagged with both 'python' and 'java'. Return user_id, python answer count, java answer count.",
+      "query": "MATCH (u:User)-[:ANSWERED]->(q:Question)-[:TAGGED]->(t:Tag)\nWHERE t.name IN ['python', 'java']\nWITH u, t, COUNT(DISTINCT q) AS count\nWITH u, COLLECT({tag: t.name, count: count}) AS tags\nUNWIND tags AS tag\nWITH u, tag.tag AS tag_name, tag.count AS tag_count\nWITH u, \n     SUM(CASE WHEN tag_name = 'python' THEN tag_count ELSE 0 END) AS python_count,\n     SUM(CASE WHEN tag_name = 'java' THEN tag_count ELSE 0 END) AS java_count\nWHERE python_count > 0 AND java_count > 0\nRETURN elementId(u) AS user_id, python_count, java_count\nLIMIT 10",
+      "db": "neo4j",
+      "results": [
+        {
+          "user_id": "4:d603106a-ff18-4e5e-9ec2-835953e06bd7:287393",
+          "python_count": 1,
+          "java_count": 2
+        },
+        {
+          "user_id": "4:d603106a-ff18-4e5e-9ec2-835953e06bd7:288963",
+          "python_count": 2,
+          "java_count": 2
+        },
+        {
+          "user_id": "4:d603106a-ff18-4e5e-9ec2-835953e06bd7:322198",
+          "python_count": 1,
+          "java_count": 1
+        },
+        {
+          "user_id": "4:d603106a-ff18-4e5e-9ec2-835953e06bd7:286569",
+          "python_count": 2,
+          "java_count": 2
+        },
+        {
+          "user_id": "4:d603106a-ff18-4e5e-9ec2-835953e06bd7:323392",
+          "python_count": 1,
+          "java_count": 1
+        },
+        {
+          "user_id": "4:d603106a-ff18-4e5e-9ec2-835953e06bd7:286793",
+          "python_count": 1,
+          "java_count": 4
+        },
+        {
+          "user_id": "4:d603106a-ff18-4e5e-9ec2-835953e06bd7:287021",
+          "python_count": 11,
+          "java_count": 2
+        },
+        {
+          "user_id": "4:d603106a-ff18-4e5e-9ec2-835953e06bd7:288968",
+          "python_count": 4,
+          "java_count": 1
+        },
+        {
+          "user_id": "4:d603106a-ff18-4e5e-9ec2-835953e06bd7:308450",
+          "python_count": 1,
+          "java_count": 2
+        },
+        {
+          "user_id": "4:d603106a-ff18-4e5e-9ec2-835953e06bd7:323987",
+          "python_count": 3,
+          "java_count": 2
+        }
+      ],
+      "insight": "The results show that there are multiple users who have answered questions tagged with both 'python' and 'java', with one user having answered 2 python questions and 2 java questions, as seen in the rows with user_id '4:d603106a-ff18-4e5e-9ec2-835953e06bd7:288963' and '4:d603106a-ff18-4e5e-9ec2-835953e06bd7:286569'. Most users have answered either 1 or 2 questions in each language, with counts of 1 python and 1 java answer being the most common combination, as seen in the rows with user_id '4:d603106a-ff18-4e5e-9ec2-835953e06bd7:322198' and '4:d603106a-ff18-4e5e-9ec2-835953e06bd7:323392'. Overall, the users have answered a total of 1 to 2 python questions and 1 to 2 java questions."
+    },
+    {
+      "label": "MongoDB #1 \u2014 Highest Scoring Tags",
+      "question": "Find the top 10 tags where questions have the highest average score. Only include tags with at least 100 questions.",
+      "query": "[\n  {\n    \"$unwind\": \"$tags\"\n  },\n  {\n    \"$group\": {\n      \"_id\": \"$tags\",\n      \"avg_score\": {\n        \"$avg\": \"$score\"\n      },\n      \"count\": {\n        \"$sum\": 1\n      }\n    }\n  },\n  {\n    \"$match\": {\n      \"count\": {\n        \"$gte\": 100\n      }\n    }\n  },\n  {\n    \"$sort\": {\n      \"avg_score\": -1\n    }\n  },\n  {\n    \"$limit\": 10\n  }\n]",
+      "db": "mongodb",
+      "results": [
+        "{'_id': 'git', 'avg_score': 90.0627802690583, 'count': 223}",
+        "{'_id': 'version-control', 'avg_score': 38.77777777777778, 'count': 234}",
+        "{'_id': 'vim', 'avg_score': 36.20740740740741, 'count': 135}",
+        "{'_id': 'bash', 'avg_score': 30.114754098360656, 'count': 183}",
+        "{'_id': 'function', 'avg_score': 26.73202614379085, 'count': 153}",
+        "{'_id': 'shell', 'avg_score': 26.03726708074534, 'count': 161}",
+        "{'_id': 'string', 'avg_score': 24.49206349206349, 'count': 441}",
+        "{'_id': 'arrays', 'avg_score': 21.624365482233504, 'count': 394}",
+        "{'_id': 'coding-style', 'avg_score': 21.375, 'count': 112}",
+        "{'_id': 'pointers', 'avg_score': 21.3359375, 'count': 128}"
+      ],
+      "insight": "The top-scoring tag is 'git' with an average score of 90.06, significantly outperforming other tags, and it has 223 associated questions. In contrast, the 'version-control' tag has a much lower average score of 38.78, despite having more questions at 234. The 'vim' tag also has a notable average score of 36.21, with 135 questions, making it one of the top tags for high-scoring questions."
+    },
+    {
+      "label": "MongoDB #2 \u2014 Annual Closure Rate",
+      "question": "For each year, return the total questions asked and the percentage that were closed.",
+      "query": "[\n  {\n    \"$project\": {\n      \"year\": {\"$year\": \"$creation_date\"},\n      \"is_closed\": \"$is_closed\"\n    }\n  },\n  {\n    \"$group\": {\n      \"_id\": \"$year\",\n      \"total_questions\": {\"$sum\": 1},\n      \"closed_questions\": {\"$sum\": {\"$cond\": [\"$is_closed\", 1, 0]}}\n    }\n  },\n  {\n    \"$project\": {\n      \"_id\": 0,\n      \"year\": \"$_id\",\n      \"total_questions\": 1,\n      \"percentage_closed\": {\"$multiply\": [{\"$divide\": [\"$closed_questions\", \"$total_questions\"]}, 100]}\n    }\n  },\n  {\n    \"$sort\": {\"year\": 1}\n  },\n  {\n    \"$limit\": 10\n  }\n]",
+      "db": "mongodb",
+      "results": [
+        "{'total_questions': 5826, 'year': 2008, 'percentage_closed': 7.363542739443872}",
+        "{'total_questions': 34515, 'year': 2009, 'percentage_closed': 3.5173113139214833}",
+        "{'total_questions': 9659, 'year': 2010, 'percentage_closed': 2.6089657314421784}"
+      ],
+      "insight": "In 2008, a total of 5,826 questions were asked, with approximately 7.36% of them being closed. The following year, 2009, saw a significant increase in total questions to 34,515, but the percentage of closed questions decreased to around 3.52%. By 2010, the total questions asked dropped to 9,659, with about 2.61% of them being closed."
+    }
+  ],
+  "community_names": [
+    {
+      "community_id": 1,
+      "tags": [
+        "javascript",
+        "jquery",
+        "html",
+        "css",
+        "angular",
+        "react",
+        "node.js",
+        "typescript"
+      ],
+      "llm_name": "Frontend Development",
+      "llm_description": "Building user interfaces with javascript and related technologies."
+    },
+    {
+      "community_id": 2,
+      "tags": [
+        "python",
+        "pandas",
+        "numpy",
+        "matplotlib",
+        "scikit-learn",
+        "django",
+        "flask"
+      ],
+      "llm_name": "Python Data Science",
+      "llm_description": "Python is used for data analysis and machine learning with libraries like pandas and scikit-learn."
+    },
+    {
+      "community_id": 3,
+      "tags": [
+        "java",
+        "spring",
+        "maven",
+        "hibernate",
+        "android",
+        "gradle"
+      ],
+      "llm_name": "Java Development Tools",
+      "llm_description": "These tools are used for building and managing Java-based applications."
+    },
+    {
+      "community_id": 4,
+      "tags": [
+        "sql",
+        "mysql",
+        "postgresql",
+        "database",
+        "sqlite",
+        "oracle"
+      ],
+      "llm_name": "Database Systems",
+      "llm_description": "Relational database management systems like MySQL and PostgreSQL provide data storage solutions."
+    },
+    {
+      "community_id": 5,
+      "tags": [
+        "c#",
+        ".net",
+        "asp.net",
+        "wpf",
+        "entity-framework",
+        "linq"
+      ],
+      "llm_name": "C Sharp Development",
+      "llm_description": "C# is a modern object-oriented programming language developed by Microsoft as a part of its .NET initiative."
+    },
+    {
+      "community_id": 6,
+      "tags": [
+        "aws",
+        "docker",
+        "kubernetes",
+        "linux",
+        "bash",
+        "terraform"
+      ],
+      "llm_name": "Cloud DevOps Tools",
+      "llm_description": "These tools enable efficient cloud infrastructure management and deployment."
+    }
+  ],
+  "raw_evidence": [
+    {
+      "label": "Cypher #1 \u2014 Fast Python Answerers \u2014 Generate Cypher",
+      "system_prompt": "You are a Neo4j Cypher expert.\n\nGraph schema:\n  Nodes        : User {id}\n               | Question {id, title, score, creation_date, is_closed}\n               | Answer   {id, score, creation_date}\n               | Tag      {name}\n  Relationships: (User)-[:ASKED]->(Question)\n                 (User)-[:ANSWERED]->(Question)\n                 (User)-[:PROVIDED]->(Answer)\n                 (Answer)-[:ANSWERS]->(Question)\n                 (Question)-[:TAGGED]->(Tag)\n                 (Tag)-[:CO_OCCURS_WITH {weight}]-(Tag)\n\nRules:\n- Return ONLY the Cypher query, no explanation, no markdown fences.\n- Always end with LIMIT 10 unless the question specifies otherwise.\n- Use elementId() instead of id() for node comparison.",
+      "user_prompt": "Find all users who answered Python questions within 10 minutes of them being posted. Return user_id and count of such fast answers.",
+      "response": "MATCH (u:User)-[:ANSWERED]->(q:Question)-[:TAGGED]->(t:Tag {name: 'Python'}), \n      (u)-[:PROVIDED]->(a:Answer)-[:ANSWERS]->(q) \nWHERE a.creation_date - q.creation_date <= duration('PT10M') \nRETURN u.id AS user_id, COUNT(a) AS count \nGROUP BY u.id \nORDER BY count DESC \nLIMIT 10",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 236,
+      "output_tokens": 98
+    },
+    {
+      "label": "Cypher #1 \u2014 Fast Python Answerers \u2014 Insight",
+      "system_prompt": "You are a data analyst summarising query results \nfrom a Stack Overflow dataset (2008-2016).\nGiven a question and its results, write 2-3 sentences of plain-English insight.\nBe specific \u2014 mention actual values from the results.\nNo bullet points, no headers, just concise prose.",
+      "user_prompt": "Question: Find all users who answered Python questions within 10 minutes of them being posted. Return user_id and count of such fast answers.\n\nQuery results:\n{'error': '{neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Invalid input \\'GROUP\\': expected \\',\\', \\'ORDER BY\\', \\'CALL\\', \\'CREATE\\', \\'LOAD CSV\\', \\'DELETE\\', \\'DETACH\\', \\'FILTER\\', \\'FINISH\\', \\'FOREACH\\', \\'INSERT\\', \\'LET\\', \\'LIMIT\\', \\'MATCH\\', \\'MERGE\\', \\'NEXT\\', \\'NODETACH\\', \\'OFFSET\\', \\'OPTIONAL\\', \\'REMOVE\\', \\'RETURN\\', \\'SET\\', \\'SHOW\\', \\'SKIP\\', \\'TERMINATE\\', \\'UNION\\', \\'UNWIND\\', \\'USE\\', \\'WITH\\' or <EOF> (line 5, column 1 (offset: 235))\\n\"GROUP BY u.id\"\\n ^} {gql_status: 42001} {gql_status_description: error: syntax error or access rule violation - invalid syntax}'}",
+      "response": "Unfortunately, the query to find users who answered Python questions within 10 minutes of them being posted returned an error, specifically a syntax error. The error message indicates that the query is invalid, with the word \"GROUP\" being the point of contention, and it was expecting a different keyword or symbol. As a result, no user_ids or counts of fast answers were returned, with the error code being 42001.",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 312,
+      "output_tokens": 85
+    },
+    {
+      "label": "Cypher #2 \u2014 JavaScript Tag Neighbourhood \u2014 Generate Cypher",
+      "system_prompt": "You are a Neo4j Cypher expert.\n\nGraph schema:\n  Nodes        : User {id}\n               | Question {id, title, score, creation_date, is_closed}\n               | Answer   {id, score, creation_date}\n               | Tag      {name}\n  Relationships: (User)-[:ASKED]->(Question)\n                 (User)-[:ANSWERED]->(Question)\n                 (User)-[:PROVIDED]->(Answer)\n                 (Answer)-[:ANSWERS]->(Question)\n                 (Question)-[:TAGGED]->(Tag)\n                 (Tag)-[:CO_OCCURS_WITH {weight}]-(Tag)\n\nRules:\n- Return ONLY the Cypher query, no explanation, no markdown fences.\n- Always end with LIMIT 10 unless the question specifies otherwise.\n- Use elementId() instead of id() for node comparison.",
+      "user_prompt": "Find the top 10 tags that appear most frequently alongside the 'javascript' tag, ordered by co-occurrence weight.",
+      "response": "MATCH (t1:Tag {name: 'javascript'})-[:CO_OCCURS_WITH]-(t2:Tag) \nRETURN t2.name, SUM(t1)-[:CO_OCCURS_WITH]->(t2).weight AS weight \nORDER BY weight DESC \nLIMIT 10",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 235,
+      "output_tokens": 60
+    },
+    {
+      "label": "Cypher #2 \u2014 JavaScript Tag Neighbourhood \u2014 Insight",
+      "system_prompt": "You are a data analyst summarising query results \nfrom a Stack Overflow dataset (2008-2016).\nGiven a question and its results, write 2-3 sentences of plain-English insight.\nBe specific \u2014 mention actual values from the results.\nNo bullet points, no headers, just concise prose.",
+      "user_prompt": "Question: Find the top 10 tags that appear most frequently alongside the 'javascript' tag, ordered by co-occurrence weight.\n\nQuery results:\n{'error': '{neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Invalid input \\':\\': expected an expression (line 2, column 26 (offset: 89))\\n\"RETURN t2.name, SUM(t1)-[:CO_OCCURS_WITH]->(t2).weight AS weight\"\\n                          ^} {gql_status: 42001} {gql_status_description: error: syntax error or access rule violation - invalid syntax}'}",
+      "response": "Unfortunately, the query did not return any results due to a syntax error, with a specific error code of 42001 and a description of \"invalid syntax\". The error message indicates that there was an issue with the input on line 2, column 26, which prevented the query from executing correctly. As a result, we are unable to determine the top 10 tags that appear most frequently alongside the 'javascript' tag.",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 228,
+      "output_tokens": 87
+    },
+    {
+      "label": "Cypher #3 \u2014 Python\u2013Java Bridge Users \u2014 Generate Cypher",
+      "system_prompt": "You are a Neo4j Cypher expert.\n\nGraph schema:\n  Nodes        : User {id}\n               | Question {id, title, score, creation_date, is_closed}\n               | Answer   {id, score, creation_date}\n               | Tag      {name}\n  Relationships: (User)-[:ASKED]->(Question)\n                 (User)-[:ANSWERED]->(Question)\n                 (User)-[:PROVIDED]->(Answer)\n                 (Answer)-[:ANSWERS]->(Question)\n                 (Question)-[:TAGGED]->(Tag)\n                 (Tag)-[:CO_OCCURS_WITH {weight}]-(Tag)\n\nRules:\n- Return ONLY the Cypher query, no explanation, no markdown fences.\n- Always end with LIMIT 10 unless the question specifies otherwise.\n- Use elementId() instead of id() for node comparison.",
+      "user_prompt": "Find users who answered questions tagged with both 'python' and 'java'. Return user_id, python answer count, java answer count.",
+      "response": "MATCH (u:User)-[:ANSWERED]->(q:Question)-[:TAGGED]->(t:Tag)\nWHERE t.name IN ['python', 'java']\nWITH u, t, COUNT(DISTINCT q) AS count\nWITH u, COLLECT({tag: t.name, count: count}) AS tags\nUNWIND tags AS tag\nWITH u, tag.tag AS tag_name, tag.count AS tag_count\nWITH u, \n     SUM(CASE WHEN tag_name = 'python' THEN tag_count ELSE 0 END) AS python_count,\n     SUM(CASE WHEN tag_name = 'java' THEN tag_count ELSE 0 END) AS java_count\nWHERE python_count > 0 AND java_count > 0\nRETURN elementId(u) AS user_id, python_count, java_count\nLIMIT 10",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 237,
+      "output_tokens": 171
+    },
+    {
+      "label": "Cypher #3 \u2014 Python\u2013Java Bridge Users \u2014 Insight",
+      "system_prompt": "You are a data analyst summarising query results \nfrom a Stack Overflow dataset (2008-2016).\nGiven a question and its results, write 2-3 sentences of plain-English insight.\nBe specific \u2014 mention actual values from the results.\nNo bullet points, no headers, just concise prose.",
+      "user_prompt": "Question: Find users who answered questions tagged with both 'python' and 'java'. Return user_id, python answer count, java answer count.\n\nQuery results:\n{'user_id': '4:d603106a-ff18-4e5e-9ec2-835953e06bd7:287393', 'python_count': 1, 'java_count': 2}\n{'user_id': '4:d603106a-ff18-4e5e-9ec2-835953e06bd7:288963', 'python_count': 2, 'java_count': 2}\n{'user_id': '4:d603106a-ff18-4e5e-9ec2-835953e06bd7:322198', 'python_count': 1, 'java_count': 1}\n{'user_id': '4:d603106a-ff18-4e5e-9ec2-835953e06bd7:286569', 'python_count': 2, 'java_count': 2}\n{'user_id': '4:d603106a-ff18-4e5e-9ec2-835953e06bd7:323392', 'python_count': 1, 'java_count': 1}\n... (5 more rows)",
+      "response": "The results show that there are multiple users who have answered questions tagged with both 'python' and 'java', with one user having answered 2 python questions and 2 java questions, as seen in the rows with user_id '4:d603106a-ff18-4e5e-9ec2-835953e06bd7:288963' and '4:d603106a-ff18-4e5e-9ec2-835953e06bd7:286569'. Most users have answered either 1 or 2 questions in each language, with counts of 1 python and 1 java answer being the most common combination, as seen in the rows with user_id '4:d603106a-ff18-4e5e-9ec2-835953e06bd7:322198' and '4:d603106a-ff18-4e5e-9ec2-835953e06bd7:323392'. Overall, the users have answered a total of 1 to 2 python questions and 1 to 2 java questions.",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 370,
+      "output_tokens": 229
+    },
+    {
+      "label": "MongoDB #1 \u2014 Highest Scoring Tags \u2014 Generate Pipeline",
+      "system_prompt": "You are a MongoDB aggregation expert.\n\nCollection: stackoverflow.questions\nDocument shape:\n{\n  _id, title, body, score, creation_date, closed_date, is_closed,\n  owner_user_id, tags: [str], answer_count, top_answer_score,\n  answers: [{ answer_id, owner_user_id, score, creation_date }]\n}\n\nRules:\n- Return ONLY a valid Python list for an aggregation pipeline.\n- No explanation, no markdown fences, no variable assignment.\n- Always include a $limit of 10 at the end.",
+      "user_prompt": "Find the top 10 tags where questions have the highest average score. Only include tags with at least 100 questions.",
+      "response": "[\n  {\n    \"$unwind\": \"$tags\"\n  },\n  {\n    \"$group\": {\n      \"_id\": \"$tags\",\n      \"avg_score\": {\n        \"$avg\": \"$score\"\n      },\n      \"count\": {\n        \"$sum\": 1\n      }\n    }\n  },\n  {\n    \"$match\": {\n      \"count\": {\n        \"$gte\": 100\n      }\n    }\n  },\n  {\n    \"$sort\": {\n      \"avg_score\": -1\n    }\n  },\n  {\n    \"$limit\": 10\n  }\n]",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 168,
+      "output_tokens": 117
+    },
+    {
+      "label": "MongoDB #1 \u2014 Highest Scoring Tags \u2014 Insight",
+      "system_prompt": "You are a data analyst summarising query results \nfrom a Stack Overflow dataset (2008-2016).\nGiven a question and its results, write 2-3 sentences of plain-English insight.\nBe specific \u2014 mention actual values from the results.\nNo bullet points, no headers, just concise prose.",
+      "user_prompt": "Question: Find the top 10 tags where questions have the highest average score. Only include tags with at least 100 questions.\n\nQuery results:\n{'_id': 'git', 'avg_score': 90.0627802690583, 'count': 223}\n{'_id': 'version-control', 'avg_score': 38.77777777777778, 'count': 234}\n{'_id': 'vim', 'avg_score': 36.20740740740741, 'count': 135}\n{'_id': 'bash', 'avg_score': 30.114754098360656, 'count': 183}\n{'_id': 'function', 'avg_score': 26.73202614379085, 'count': 153}\n... (5 more rows)",
+      "response": "The top-scoring tag is 'git' with an average score of 90.06, significantly outperforming other tags, and it has 223 associated questions. In contrast, the 'version-control' tag has a much lower average score of 38.78, despite having more questions at 234. The 'vim' tag also has a notable average score of 36.21, with 135 questions, making it one of the top tags for high-scoring questions.",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 263,
+      "output_tokens": 99
+    },
+    {
+      "label": "MongoDB #2 \u2014 Annual Closure Rate \u2014 Generate Pipeline",
+      "system_prompt": "You are a MongoDB aggregation expert.\n\nCollection: stackoverflow.questions\nDocument shape:\n{\n  _id, title, body, score, creation_date, closed_date, is_closed,\n  owner_user_id, tags: [str], answer_count, top_answer_score,\n  answers: [{ answer_id, owner_user_id, score, creation_date }]\n}\n\nRules:\n- Return ONLY a valid Python list for an aggregation pipeline.\n- No explanation, no markdown fences, no variable assignment.\n- Always include a $limit of 10 at the end.",
+      "user_prompt": "For each year, return the total questions asked and the percentage that were closed.",
+      "response": "[\n  {\n    \"$project\": {\n      \"year\": {\"$year\": \"$creation_date\"},\n      \"is_closed\": \"$is_closed\"\n    }\n  },\n  {\n    \"$group\": {\n      \"_id\": \"$year\",\n      \"total_questions\": {\"$sum\": 1},\n      \"closed_questions\": {\"$sum\": {\"$cond\": [\"$is_closed\", 1, 0]}}\n    }\n  },\n  {\n    \"$project\": {\n      \"_id\": 0,\n      \"year\": \"$_id\",\n      \"total_questions\": 1,\n      \"percentage_closed\": {\"$multiply\": [{\"$divide\": [\"$closed_questions\", \"$total_questions\"]}, 100]}\n    }\n  },\n  {\n    \"$sort\": {\"year\": 1}\n  },\n  {\n    \"$limit\": 10\n  }\n]",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 160,
+      "output_tokens": 175
+    },
+    {
+      "label": "MongoDB #2 \u2014 Annual Closure Rate \u2014 Insight",
+      "system_prompt": "You are a data analyst summarising query results \nfrom a Stack Overflow dataset (2008-2016).\nGiven a question and its results, write 2-3 sentences of plain-English insight.\nBe specific \u2014 mention actual values from the results.\nNo bullet points, no headers, just concise prose.",
+      "user_prompt": "Question: For each year, return the total questions asked and the percentage that were closed.\n\nQuery results:\n{'total_questions': 5826, 'year': 2008, 'percentage_closed': 7.363542739443872}\n{'total_questions': 34515, 'year': 2009, 'percentage_closed': 3.5173113139214833}\n{'total_questions': 9659, 'year': 2010, 'percentage_closed': 2.6089657314421784}",
+      "response": "In 2008, a total of 5,826 questions were asked, with approximately 7.36% of them being closed. The following year, 2009, saw a significant increase in total questions to 34,515, but the percentage of closed questions decreased to around 3.52%. By 2010, the total questions asked dropped to 9,659, with about 2.61% of them being closed.",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 204,
+      "output_tokens": 92
+    },
+    {
+      "label": "Community Naming #1",
+      "system_prompt": "You are a technology analyst.\nGiven a list of programming tags from the same graph community,\nreturn ONLY valid JSON: {\"name\": \"...\", \"description\": \"...\"}\nname: 3-6 words. description: one sentence. No markdown.",
+      "user_prompt": "Tags: javascript, jquery, html, css, angular, react, node.js, typescript",
+      "response": "{\"name\": \"Frontend Development\", \"description\": \"Building user interfaces with javascript and related technologies.\"}",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 103,
+      "output_tokens": 23
+    },
+    {
+      "label": "Community Naming #2",
+      "system_prompt": "You are a technology analyst.\nGiven a list of programming tags from the same graph community,\nreturn ONLY valid JSON: {\"name\": \"...\", \"description\": \"...\"}\nname: 3-6 words. description: one sentence. No markdown.",
+      "user_prompt": "Tags: python, pandas, numpy, matplotlib, scikit-learn, django, flask",
+      "response": "{\"name\": \"Python Data Science\", \"description\": \"Python is used for data analysis and machine learning with libraries like pandas and scikit-learn.\"}",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 102,
+      "output_tokens": 33
+    },
+    {
+      "label": "Community Naming #3",
+      "system_prompt": "You are a technology analyst.\nGiven a list of programming tags from the same graph community,\nreturn ONLY valid JSON: {\"name\": \"...\", \"description\": \"...\"}\nname: 3-6 words. description: one sentence. No markdown.",
+      "user_prompt": "Tags: java, spring, maven, hibernate, android, gradle",
+      "response": "{\"name\": \"Java Development Tools\", \"description\": \"These tools are used for building and managing Java-based applications.\"}",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 100,
+      "output_tokens": 26
+    },
+    {
+      "label": "Community Naming #4",
+      "system_prompt": "You are a technology analyst.\nGiven a list of programming tags from the same graph community,\nreturn ONLY valid JSON: {\"name\": \"...\", \"description\": \"...\"}\nname: 3-6 words. description: one sentence. No markdown.",
+      "user_prompt": "Tags: sql, mysql, postgresql, database, sqlite, oracle",
+      "response": "{\"name\": \"Database Systems\", \"description\": \"Relational database management systems like MySQL and PostgreSQL provide data storage solutions.\"}",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 98,
+      "output_tokens": 27
+    },
+    {
+      "label": "Community Naming #5",
+      "system_prompt": "You are a technology analyst.\nGiven a list of programming tags from the same graph community,\nreturn ONLY valid JSON: {\"name\": \"...\", \"description\": \"...\"}\nname: 3-6 words. description: one sentence. No markdown.",
+      "user_prompt": "Tags: c#, .net, asp.net, wpf, entity-framework, linq",
+      "response": "{\"name\": \"C Sharp Development\", \"description\": \"C# is a modern object-oriented programming language developed by Microsoft as a part of its .NET initiative.\"}",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 102,
+      "output_tokens": 35
+    },
+    {
+      "label": "Community Naming #6",
+      "system_prompt": "You are a technology analyst.\nGiven a list of programming tags from the same graph community,\nreturn ONLY valid JSON: {\"name\": \"...\", \"description\": \"...\"}\nname: 3-6 words. description: one sentence. No markdown.",
+      "user_prompt": "Tags: aws, docker, kubernetes, linux, bash, terraform",
+      "response": "{\"name\": \"Cloud DevOps Tools\", \"description\": \"These tools enable efficient cloud infrastructure management and deployment.\"}",
+      "model": "llama-3.3-70b-versatile",
+      "input_tokens": 99,
+      "output_tokens": 25
+    }
+  ],
+  "stats": {
+    "total_api_calls": 16,
+    "total_input_tokens": 3017,
+    "total_output_tokens": 1382
+  }
+}

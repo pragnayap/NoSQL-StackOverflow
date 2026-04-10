@@ -1,0 +1,487 @@
+[
+  {
+    "title": "Q1 \u00b7 Most Connected Users (asked + answered)",
+    "rows": [
+      {
+        "user_id": 22656,
+        "questions_asked": 1,
+        "questions_answered": 402,
+        "total_activity": 403
+      },
+      {
+        "user_id": 23354,
+        "questions_asked": 2,
+        "questions_answered": 330,
+        "total_activity": 332
+      },
+      {
+        "user_id": 12950,
+        "questions_asked": 2,
+        "questions_answered": 235,
+        "total_activity": 237
+      },
+      {
+        "user_id": 23283,
+        "questions_asked": 0,
+        "questions_answered": 186,
+        "total_activity": 186
+      },
+      {
+        "user_id": 3043,
+        "questions_asked": 5,
+        "questions_answered": 170,
+        "total_activity": 175
+      },
+      {
+        "user_id": 10661,
+        "questions_asked": 4,
+        "questions_answered": 162,
+        "total_activity": 166
+      },
+      {
+        "user_id": 76337,
+        "questions_asked": 0,
+        "questions_answered": 153,
+        "total_activity": 153
+      },
+      {
+        "user_id": 33708,
+        "questions_asked": 0,
+        "questions_answered": 131,
+        "total_activity": 131
+      },
+      {
+        "user_id": 6309,
+        "questions_asked": 0,
+        "questions_answered": 118,
+        "total_activity": 118
+      },
+      {
+        "user_id": 14860,
+        "questions_asked": 3,
+        "questions_answered": 113,
+        "total_activity": 116
+      },
+      {
+        "user_id": 95810,
+        "questions_asked": 1,
+        "questions_answered": 114,
+        "total_activity": 115
+      },
+      {
+        "user_id": 34211,
+        "questions_asked": 1,
+        "questions_answered": 110,
+        "total_activity": 111
+      },
+      {
+        "user_id": 15168,
+        "questions_asked": 3,
+        "questions_answered": 106,
+        "total_activity": 109
+      },
+      {
+        "user_id": 16076,
+        "questions_asked": 1,
+        "questions_answered": 106,
+        "total_activity": 107
+      },
+      {
+        "user_id": 893,
+        "questions_asked": 2,
+        "questions_answered": 104,
+        "total_activity": 106
+      }
+    ]
+  },
+  {
+    "title": "Q2 \u00b7 Top Tag Co-Occurrences (technology pairs)",
+    "rows": [
+      {
+        "tag_a": "c#",
+        "tag_b": ".net",
+        "shared_questions": 740
+      },
+      {
+        "tag_a": "asp.net",
+        "tag_b": "c#",
+        "shared_questions": 304
+      },
+      {
+        "tag_a": "javascript",
+        "tag_b": "jquery",
+        "shared_questions": 248
+      },
+      {
+        "tag_a": "sql",
+        "tag_b": "sql-server",
+        "shared_questions": 202
+      },
+      {
+        "tag_a": "c#",
+        "tag_b": "winforms",
+        "shared_questions": 173
+      },
+      {
+        "tag_a": "html",
+        "tag_b": "css",
+        "shared_questions": 166
+      },
+      {
+        "tag_a": "iphone",
+        "tag_b": "cocoa-touch",
+        "shared_questions": 153
+      },
+      {
+        "tag_a": "ruby",
+        "tag_b": "ruby-on-rails",
+        "shared_questions": 151
+      },
+      {
+        "tag_a": "html",
+        "tag_b": "javascript",
+        "shared_questions": 142
+      },
+      {
+        "tag_a": "asp.net",
+        "tag_b": ".net",
+        "shared_questions": 137
+      },
+      {
+        "tag_a": "objective-c",
+        "tag_b": "iphone",
+        "shared_questions": 136
+      },
+      {
+        "tag_a": ".net",
+        "tag_b": "winforms",
+        "shared_questions": 121
+      },
+      {
+        "tag_a": "sql-server",
+        "tag_b": "sql-server-2005",
+        "shared_questions": 116
+      },
+      {
+        "tag_a": "c++",
+        "tag_b": "c",
+        "shared_questions": 106
+      },
+      {
+        "tag_a": "c#",
+        "tag_b": "linq",
+        "shared_questions": 104
+      }
+    ]
+  },
+  {
+    "title": "Q3 \u00b7 Top Experts per Tag (by total answer score)",
+    "rows": [
+      {
+        "tag": ".htaccess",
+        "user_id": 53114,
+        "total_score": 18,
+        "answer_count": 12,
+        "rank": 1
+      },
+      {
+        "tag": ".htaccess",
+        "user_id": 47529,
+        "total_score": 10,
+        "answer_count": 3,
+        "rank": 2
+      },
+      {
+        "tag": ".htaccess",
+        "user_id": 56541,
+        "total_score": 1,
+        "answer_count": 3,
+        "rank": 3
+      },
+      {
+        "tag": ".net",
+        "user_id": 22656,
+        "total_score": 2619,
+        "answer_count": 103,
+        "rank": 1
+      },
+      {
+        "tag": ".net",
+        "user_id": 12597,
+        "total_score": 1862,
+        "answer_count": 3,
+        "rank": 2
+      },
+      {
+        "tag": ".net",
+        "user_id": 23354,
+        "total_score": 1702,
+        "answer_count": 117,
+        "rank": 3
+      },
+      {
+        "tag": ".net-2.0",
+        "user_id": 22656,
+        "total_score": 67,
+        "answer_count": 4,
+        "rank": 1
+      },
+      {
+        "tag": ".net-2.0",
+        "user_id": 3043,
+        "total_score": 20,
+        "answer_count": 5,
+        "rank": 2
+      },
+      {
+        "tag": ".net-2.0",
+        "user_id": 76337,
+        "total_score": 4,
+        "answer_count": 3,
+        "rank": 3
+      },
+      {
+        "tag": ".net-3.5",
+        "user_id": 22656,
+        "total_score": 190,
+        "answer_count": 7,
+        "rank": 1
+      },
+      {
+        "tag": ".net-3.5",
+        "user_id": 8155,
+        "total_score": 16,
+        "answer_count": 4,
+        "rank": 2
+      },
+      {
+        "tag": "3d",
+        "user_id": 10897,
+        "total_score": 8,
+        "answer_count": 3,
+        "rank": 1
+      },
+      {
+        "tag": "64bit",
+        "user_id": 56524,
+        "total_score": -7,
+        "answer_count": 3,
+        "rank": 1
+      },
+      {
+        "tag": "access-vba",
+        "user_id": 2548,
+        "total_score": 22,
+        "answer_count": 3,
+        "rank": 1
+      },
+      {
+        "tag": "accessibility",
+        "user_id": 3201,
+        "total_score": 4,
+        "answer_count": 3,
+        "rank": 1
+      }
+    ]
+  },
+  {
+    "title": "Q4 \u00b7 Shortest Knowledge Path Between Two Users",
+    "rows": [
+      {
+        "from_user": 1,
+        "to_user": 3,
+        "hops": 6,
+        "shared_questions": [
+          218680,
+          501090,
+          292830
+        ]
+      }
+    ]
+  },
+  {
+    "title": "BONUS \u00b7 Technology Breadth per Expert User",
+    "rows": [
+      {
+        "user_id": 22656,
+        "unique_tags": 407,
+        "questions_answered": 402,
+        "sample_tags": [
+          "actionscript-3",
+          "sql",
+          "asp.net",
+          "sitemap",
+          "algorithm"
+        ]
+      },
+      {
+        "user_id": 23354,
+        "unique_tags": 329,
+        "questions_answered": 330,
+        "sample_tags": [
+          "svn",
+          "sql",
+          "asp.net",
+          "algorithm",
+          "language-agnostic"
+        ]
+      },
+      {
+        "user_id": 12950,
+        "unique_tags": 290,
+        "questions_answered": 235,
+        "sample_tags": [
+          "svn",
+          "sql",
+          "asp.net",
+          "algorithm",
+          "language-agnostic"
+        ]
+      },
+      {
+        "user_id": 23283,
+        "unique_tags": 234,
+        "questions_answered": 186,
+        "sample_tags": [
+          "branch",
+          "asp.net",
+          "language-agnostic",
+          "c#",
+          ".net"
+        ]
+      },
+      {
+        "user_id": 10661,
+        "unique_tags": 225,
+        "questions_answered": 162,
+        "sample_tags": [
+          "sql",
+          "algorithm",
+          "language-agnostic",
+          "c#",
+          "scripting"
+        ]
+      },
+      {
+        "user_id": 3043,
+        "unique_tags": 212,
+        "questions_answered": 170,
+        "sample_tags": [
+          "svn",
+          "sql",
+          "asp.net",
+          "c#",
+          ".net"
+        ]
+      },
+      {
+        "user_id": 14860,
+        "unique_tags": 200,
+        "questions_answered": 113,
+        "sample_tags": [
+          "sql",
+          "algorithm",
+          "language-agnostic",
+          "colors",
+          "c#"
+        ]
+      },
+      {
+        "user_id": 33708,
+        "unique_tags": 194,
+        "questions_answered": 131,
+        "sample_tags": [
+          "flex",
+          "actionscript-3",
+          "sql",
+          "asp.net",
+          "algorithm"
+        ]
+      },
+      {
+        "user_id": 76337,
+        "unique_tags": 192,
+        "questions_answered": 153,
+        "sample_tags": [
+          "branch",
+          "sql",
+          "asp.net",
+          "c#",
+          ".net"
+        ]
+      },
+      {
+        "user_id": 6309,
+        "unique_tags": 185,
+        "questions_answered": 118,
+        "sample_tags": [
+          "flex",
+          "svn",
+          "branch",
+          "sql",
+          "language-agnostic"
+        ]
+      },
+      {
+        "user_id": 15168,
+        "unique_tags": 183,
+        "questions_answered": 106,
+        "sample_tags": [
+          "sql",
+          "algorithm",
+          "language-agnostic",
+          "c#",
+          ".net"
+        ]
+      },
+      {
+        "user_id": 95810,
+        "unique_tags": 181,
+        "questions_answered": 114,
+        "sample_tags": [
+          "sql",
+          "algorithm",
+          "language-agnostic",
+          "c#",
+          ".net"
+        ]
+      },
+      {
+        "user_id": 893,
+        "unique_tags": 173,
+        "questions_answered": 104,
+        "sample_tags": [
+          "svn",
+          "sql",
+          "asp.net",
+          "algorithm",
+          "language-agnostic"
+        ]
+      },
+      {
+        "user_id": 34211,
+        "unique_tags": 168,
+        "questions_answered": 110,
+        "sample_tags": [
+          "sql",
+          "asp.net",
+          "c#",
+          ".net",
+          "scripting"
+        ]
+      },
+      {
+        "user_id": 35092,
+        "unique_tags": 166,
+        "questions_answered": 84,
+        "sample_tags": [
+          "sql",
+          "algorithm",
+          "language-agnostic",
+          "c#",
+          ".net"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,742 @@
+[
+  {
+    "pipeline": "P1 - Top 20 Tags",
+    "results": [
+      {
+        "question_count": 6370,
+        "tag": "c#"
+      },
+      {
+        "question_count": 3584,
+        "tag": "java"
+      },
+      {
+        "question_count": 3420,
+        "tag": ".net"
+      },
+      {
+        "question_count": 3026,
+        "tag": "php"
+      },
+      {
+        "question_count": 2880,
+        "tag": "asp.net"
+      },
+      {
+        "question_count": 2663,
+        "tag": "javascript"
+      },
+      {
+        "question_count": 2368,
+        "tag": "c++"
+      },
+      {
+        "question_count": 2040,
+        "tag": "jquery"
+      },
+      {
+        "question_count": 1950,
+        "tag": "python"
+      },
+      {
+        "question_count": 1940,
+        "tag": "iphone"
+      },
+      {
+        "question_count": 1689,
+        "tag": "sql"
+      },
+      {
+        "question_count": 1373,
+        "tag": "html"
+      },
+      {
+        "question_count": 1311,
+        "tag": "sql-server"
+      },
+      {
+        "question_count": 1304,
+        "tag": "mysql"
+      },
+      {
+        "question_count": 1044,
+        "tag": "asp.net-mvc"
+      },
+      {
+        "question_count": 1028,
+        "tag": "c"
+      },
+      {
+        "question_count": 976,
+        "tag": "ruby-on-rails"
+      },
+      {
+        "question_count": 943,
+        "tag": "css"
+      },
+      {
+        "question_count": 909,
+        "tag": "wpf"
+      },
+      {
+        "question_count": 901,
+        "tag": "objective-c"
+      }
+    ]
+  },
+  {
+    "pipeline": "P2 - Avg Score per Tag",
+    "results": [
+      {
+        "total_questions": 223,
+        "tag": "git",
+        "avg_score": 90.06
+      },
+      {
+        "total_questions": 234,
+        "tag": "version-control",
+        "avg_score": 38.78
+      },
+      {
+        "total_questions": 441,
+        "tag": "string",
+        "avg_score": 24.49
+      },
+      {
+        "total_questions": 394,
+        "tag": "arrays",
+        "avg_score": 21.62
+      },
+      {
+        "total_questions": 243,
+        "tag": "file",
+        "avg_score": 19.17
+      },
+      {
+        "total_questions": 2663,
+        "tag": "javascript",
+        "avg_score": 16.27
+      },
+      {
+        "total_questions": 373,
+        "tag": "eclipse",
+        "avg_score": 15.62
+      },
+      {
+        "total_questions": 1950,
+        "tag": "python",
+        "avg_score": 15.47
+      },
+      {
+        "total_questions": 540,
+        "tag": "performance",
+        "avg_score": 15.35
+      },
+      {
+        "total_questions": 244,
+        "tag": "language-agnostic",
+        "avg_score": 15.25
+      },
+      {
+        "total_questions": 336,
+        "tag": "tsql",
+        "avg_score": 14.93
+      },
+      {
+        "total_questions": 943,
+        "tag": "css",
+        "avg_score": 14.01
+      },
+      {
+        "total_questions": 1373,
+        "tag": "html",
+        "avg_score": 13.86
+      },
+      {
+        "total_questions": 381,
+        "tag": "svn",
+        "avg_score": 13.57
+      },
+      {
+        "total_questions": 456,
+        "tag": "android",
+        "avg_score": 13.38
+      },
+      {
+        "total_questions": 558,
+        "tag": "linux",
+        "avg_score": 12.98
+      },
+      {
+        "total_questions": 1028,
+        "tag": "c",
+        "avg_score": 12.94
+      },
+      {
+        "total_questions": 3584,
+        "tag": "java",
+        "avg_score": 12.51
+      },
+      {
+        "total_questions": 231,
+        "tag": "design-patterns",
+        "avg_score": 12.22
+      },
+      {
+        "total_questions": 369,
+        "tag": "unit-testing",
+        "avg_score": 11.74
+      }
+    ]
+  },
+  {
+    "pipeline": "P3 - Questions per Year",
+    "results": [
+      {
+        "count": 5826,
+        "year": 2008,
+        "avg_score": 22.46
+      },
+      {
+        "count": 34515,
+        "year": 2009,
+        "avg_score": 7.94
+      },
+      {
+        "count": 9659,
+        "year": 2010,
+        "avg_score": 6.5
+      }
+    ]
+  },
+  {
+    "pipeline": "P4 - Most Active Askers",
+    "results": [
+      {
+        "questions_asked": 79,
+        "total_score": 1188,
+        "user_id": 68183,
+        "avg_score": 15.04
+      },
+      {
+        "questions_asked": 70,
+        "total_score": 498,
+        "user_id": 4639,
+        "avg_score": 7.11
+      },
+      {
+        "questions_asked": 69,
+        "total_score": 647,
+        "user_id": 54964,
+        "avg_score": 9.38
+      },
+      {
+        "questions_asked": 61,
+        "total_score": 706,
+        "user_id": 4653,
+        "avg_score": 11.57
+      },
+      {
+        "questions_asked": 56,
+        "total_score": 317,
+        "user_id": 84201,
+        "avg_score": 5.66
+      },
+      {
+        "questions_asked": 55,
+        "total_score": 580,
+        "user_id": 34537,
+        "avg_score": 10.55
+      },
+      {
+        "questions_asked": 50,
+        "total_score": 535,
+        "user_id": 62553,
+        "avg_score": 10.7
+      },
+      {
+        "questions_asked": 42,
+        "total_score": 314,
+        "user_id": 39677,
+        "avg_score": 7.48
+      },
+      {
+        "questions_asked": 41,
+        "total_score": 580,
+        "user_id": 104015,
+        "avg_score": 14.15
+      },
+      {
+        "questions_asked": 41,
+        "total_score": 194,
+        "user_id": 51816,
+        "avg_score": 4.73
+      },
+      {
+        "questions_asked": 41,
+        "total_score": 334,
+        "user_id": 41543,
+        "avg_score": 8.15
+      },
+      {
+        "questions_asked": 41,
+        "total_score": 1077,
+        "user_id": 179736,
+        "avg_score": 26.27
+      },
+      {
+        "questions_asked": 37,
+        "total_score": 418,
+        "user_id": 31610,
+        "avg_score": 11.3
+      },
+      {
+        "questions_asked": 36,
+        "total_score": 95,
+        "user_id": 63235,
+        "avg_score": 2.64
+      },
+      {
+        "questions_asked": 36,
+        "total_score": 331,
+        "user_id": 198729,
+        "avg_score": 9.19
+      },
+      {
+        "questions_asked": 35,
+        "total_score": 979,
+        "user_id": 11236,
+        "avg_score": 27.97
+      },
+      {
+        "questions_asked": 35,
+        "total_score": 49,
+        "user_id": 32484,
+        "avg_score": 1.4
+      },
+      {
+        "questions_asked": 35,
+        "total_score": 63,
+        "user_id": 117700,
+        "avg_score": 1.8
+      },
+      {
+        "questions_asked": 32,
+        "total_score": 202,
+        "user_id": 3834,
+        "avg_score": 6.31
+      },
+      {
+        "questions_asked": 32,
+        "total_score": 636,
+        "user_id": 2147,
+        "avg_score": 19.88
+      }
+    ]
+  },
+  {
+    "pipeline": "P5 - Answer Rates by Tag",
+    "results": [
+      {
+        "total": 217,
+        "tag": "email",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 943,
+        "tag": "css",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 231,
+        "tag": "design-patterns",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 200,
+        "tag": "api",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 371,
+        "tag": "user-interface",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 641,
+        "tag": "regex",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 398,
+        "tag": "perl",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 257,
+        "tag": "forms",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 558,
+        "tag": "linux",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 381,
+        "tag": "svn",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 225,
+        "tag": "database-design",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 244,
+        "tag": "language-agnostic",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 243,
+        "tag": "file",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 223,
+        "tag": "iis",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 352,
+        "tag": "oracle",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 402,
+        "tag": "algorithm",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 252,
+        "tag": "design",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 223,
+        "tag": "events",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 212,
+        "tag": "firefox",
+        "answer_rate_pct": 100.0
+      },
+      {
+        "total": 1304,
+        "tag": "mysql",
+        "answer_rate_pct": 99.9
+      }
+    ]
+  },
+  {
+    "pipeline": "P6 - Score Distribution",
+    "results": [
+      {
+        "_id": -100,
+        "count": 541,
+        "avg_answers": 2.646950092421442
+      },
+      {
+        "_id": 0,
+        "count": 12016,
+        "avg_answers": 2.1367343541944073
+      },
+      {
+        "_id": 1,
+        "count": 23299,
+        "avg_answers": 2.771492338726984
+      },
+      {
+        "_id": 5,
+        "count": 6452,
+        "avg_answers": 4.053781773093615
+      },
+      {
+        "_id": 10,
+        "count": 4417,
+        "avg_answers": 5.310618066561014
+      },
+      {
+        "_id": 25,
+        "count": 1675,
+        "avg_answers": 6.968955223880597
+      },
+      {
+        "_id": 50,
+        "count": 872,
+        "avg_answers": 8.92316513761468
+      },
+      {
+        "_id": 100,
+        "count": 653,
+        "avg_answers": 12.258805513016846
+      },
+      {
+        "_id": 500,
+        "count": 75,
+        "avg_answers": 18.586666666666666
+      }
+    ]
+  },
+  {
+    "pipeline": "P7 - Closed Ratio by Tag",
+    "results": [
+      {
+        "total": 371,
+        "closed": 29,
+        "tag": "user-interface",
+        "closed_pct": 7.8
+      },
+      {
+        "total": 1028,
+        "closed": 60,
+        "tag": "c",
+        "closed_pct": 5.8
+      },
+      {
+        "total": 558,
+        "closed": 32,
+        "tag": "linux",
+        "closed_pct": 5.7
+      },
+      {
+        "total": 306,
+        "closed": 16,
+        "tag": "oop",
+        "closed_pct": 5.2
+      },
+      {
+        "total": 827,
+        "closed": 41,
+        "tag": "windows",
+        "closed_pct": 5.0
+      },
+      {
+        "total": 411,
+        "closed": 20,
+        "tag": "security",
+        "closed_pct": 4.9
+      },
+      {
+        "total": 683,
+        "closed": 33,
+        "tag": "database",
+        "closed_pct": 4.8
+      },
+      {
+        "total": 402,
+        "closed": 18,
+        "tag": "algorithm",
+        "closed_pct": 4.5
+      },
+      {
+        "total": 378,
+        "closed": 17,
+        "tag": "osx",
+        "closed_pct": 4.5
+      },
+      {
+        "total": 3584,
+        "closed": 162,
+        "tag": "java",
+        "closed_pct": 4.5
+      },
+      {
+        "total": 2368,
+        "closed": 100,
+        "tag": "c++",
+        "closed_pct": 4.2
+      },
+      {
+        "total": 439,
+        "closed": 18,
+        "tag": "web-services",
+        "closed_pct": 4.1
+      },
+      {
+        "total": 1373,
+        "closed": 56,
+        "tag": "html",
+        "closed_pct": 4.1
+      },
+      {
+        "total": 3420,
+        "closed": 137,
+        "tag": ".net",
+        "closed_pct": 4.0
+      },
+      {
+        "total": 803,
+        "closed": 32,
+        "tag": "ruby",
+        "closed_pct": 4.0
+      },
+      {
+        "total": 1950,
+        "closed": 78,
+        "tag": "python",
+        "closed_pct": 4.0
+      },
+      {
+        "total": 3026,
+        "closed": 117,
+        "tag": "php",
+        "closed_pct": 3.9
+      },
+      {
+        "total": 381,
+        "closed": 15,
+        "tag": "svn",
+        "closed_pct": 3.9
+      },
+      {
+        "total": 369,
+        "closed": 14,
+        "tag": "unit-testing",
+        "closed_pct": 3.8
+      },
+      {
+        "total": 943,
+        "closed": 35,
+        "tag": "css",
+        "closed_pct": 3.7
+      }
+    ]
+  },
+  {
+    "pipeline": "P8 - Top Answerers",
+    "results": [
+      {
+        "total_ans_score": 11612,
+        "answers_given": 697,
+        "user_id": 22656,
+        "avg_ans_score": 16.66
+      },
+      {
+        "total_ans_score": 5734,
+        "answers_given": 6,
+        "user_id": 39933,
+        "avg_ans_score": 955.67
+      },
+      {
+        "total_ans_score": 5044,
+        "answers_given": 473,
+        "user_id": 23354,
+        "avg_ans_score": 10.66
+      },
+      {
+        "total_ans_score": 4999,
+        "answers_given": 175,
+        "user_id": 5445,
+        "avg_ans_score": 28.57
+      },
+      {
+        "total_ans_score": 3781,
+        "answers_given": 69,
+        "user_id": 113570,
+        "avg_ans_score": 54.8
+      },
+      {
+        "total_ans_score": 3760,
+        "answers_given": 30,
+        "user_id": 50476,
+        "avg_ans_score": 125.33
+      },
+      {
+        "total_ans_score": 3723,
+        "answers_given": 227,
+        "user_id": 6309,
+        "avg_ans_score": 16.4
+      },
+      {
+        "total_ans_score": 3609,
+        "answers_given": 73,
+        "user_id": 19563,
+        "avg_ans_score": 49.44
+      },
+      {
+        "total_ans_score": 3064,
+        "answers_given": 5,
+        "user_id": 95706,
+        "avg_ans_score": 612.8
+      },
+      {
+        "total_ans_score": 3058,
+        "answers_given": 4,
+        "user_id": 4192,
+        "avg_ans_score": 764.5
+      },
+      {
+        "total_ans_score": 3046,
+        "answers_given": 302,
+        "user_id": 23283,
+        "avg_ans_score": 10.09
+      },
+      {
+        "total_ans_score": 2880,
+        "answers_given": 5,
+        "user_id": 149076,
+        "avg_ans_score": 576.0
+      },
+      {
+        "total_ans_score": 2790,
+        "answers_given": 347,
+        "user_id": 95810,
+        "avg_ans_score": 8.04
+      },
+      {
+        "total_ans_score": 2723,
+        "answers_given": 255,
+        "user_id": 18393,
+        "avg_ans_score": 10.68
+      },
+      {
+        "total_ans_score": 2505,
+        "answers_given": 44,
+        "user_id": 24587,
+        "avg_ans_score": 56.93
+      },
+      {
+        "total_ans_score": 2480,
+        "answers_given": 35,
+        "user_id": 23501,
+        "avg_ans_score": 70.86
+      },
+      {
+        "total_ans_score": 2462,
+        "answers_given": 39,
+        "user_id": 17160,
+        "avg_ans_score": 63.13
+      },
+      {
+        "total_ans_score": 2457,
+        "answers_given": 44,
+        "user_id": 8435,
+        "avg_ans_score": 55.84
+      },
+      {
+        "total_ans_score": 2341,
+        "answers_given": 249,
+        "user_id": 10661,
+        "avg_ans_score": 9.4
+      },
+      {
+        "total_ans_score": 2280,
+        "answers_given": 20,
+        "user_id": 2214,
+        "avg_ans_score": 114.0
+      }
+    ]
+  }
+]

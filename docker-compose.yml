@@ -1,0 +1,141 @@
+services:
+
+  # Infrastructure
+
+  redis:
+    image: redis:7-alpine
+    container_name: so_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --save 60 1 --loglevel warning
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    networks:
+      - so_network
+
+  #  ETL Microservices
+
+  mongo-loader:
+    build: .
+    container_name: so_mongo_loader
+    command: python etl/load_mongodb.py
+    env_file: .env
+    volumes:
+      - ./data:/app/data:ro
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - so_network
+    restart: "no"
+    labels:
+      - "service=etl"
+      - "description=Loads 50k questions into MongoDB Atlas"
+
+  neo4j-loader:
+    build: .
+    container_name: so_neo4j_loader
+    command: python etl/load_neo4j.py
+    env_file: .env
+    volumes:
+      - ./data:/app/data:ro
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - so_network
+    restart: "no"
+    labels:
+      - "service=etl"
+      - "description=Loads 20k questions into Neo4j Aura"
+
+  #  Analytics Microservices
+
+  mongo-analytics:
+    build: .
+    container_name: so_mongo_analytics
+    command: python analytics/mongo_queries.py
+    env_file: .env
+    volumes:
+      - ./results:/app/results
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - so_network
+    restart: "no"
+    labels:
+      - "service=analytics"
+      - "description=Runs 8 MongoDB aggregation pipelines"
+
+  neo4j-analytics:
+    build: .
+    container_name: so_neo4j_analytics
+    command: python analytics/neo4j_queries.py
+    env_file: .env
+    volumes:
+      - ./results:/app/results
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - so_network
+    restart: "no"
+    labels:
+      - "service=analytics"
+      - "description=Runs 6 Neo4j Cypher queries"
+
+  # Bonus Microservices
+
+  redis-cache:
+    build: .
+    container_name: so_redis_cache
+    command: python bonus/redis_cache.py
+    env_file: .env
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - so_network
+    restart: "no"
+    labels:
+      - "service=bonus"
+      - "description=Caches MongoDB results in Redis with TTL"
+
+  llm-pipeline:
+    build: .
+    container_name: so_llm_pipeline
+    command: python bonus/llm_query_gen.py
+    env_file: .env
+    environment:
+      - REDIS_HOST=redis
+    volumes:
+      - ./results:/app/results
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - so_network
+    restart: "no"
+    labels:
+      - "service=bonus"
+      - "description=Groq end-to-end LLM query generation pipeline"
+
+# Shared network (microservice communication)
+networks:
+  so_network:
+    driver: bridge
+    name: so_analytics_network
+
+# Persistent volumes
+volumes:
+  redis_data:
+    name: so_redis_data
