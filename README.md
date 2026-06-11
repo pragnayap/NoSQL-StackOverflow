@@ -1,7 +1,6 @@
 # Stack Overflow Knowledge Intelligence Platform
 
-> **NoSQL Databases Homework 2**
-> MongoDB Atlas · Neo4j Aura · Redis · Groq LLM · Docker
+> **MongoDB Atlas · Neo4j Aura · Redis · Groq LLM · Docker**
 
 A Developer Knowledge Intelligence Platform that analyses 50,000 Stack Overflow questions using two complementary NoSQL databases — MongoDB for document analytics and Neo4j for graph-based relationship discovery — plus Redis as a caching layer and a Groq LLM end-to-end pipeline.
 
