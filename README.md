@@ -6,6 +6,23 @@ A Developer Knowledge Intelligence Platform that analyses 50,000 Stack Overflow 
 
 **Dataset:** https://www.kaggle.com/datasets/stackoverflow/stacksample
 
+## Architecture
+
+```mermaid
+flowchart LR
+    A[StackSample CSVs<br/>Questions · Answers · Tags] --> B[ETL Pipeline<br/>Python]
+    B --> C[(MongoDB Atlas<br/>50k documents)]
+    B --> D[(Neo4j Aura<br/>143k nodes · 319k rels)]
+    C --> E[8 Aggregation<br/>Pipelines]
+    D --> F[6 Cypher<br/>Queries]
+    C --> G[(Redis Cache<br/>35x speedup)]
+    C --> H[Groq LLM<br/>NL → Query Pipeline]
+    D --> H
+    E --> I[Results JSON]
+    F --> I
+    H --> I
+```
+
 ## Project Structure
 
 ```
